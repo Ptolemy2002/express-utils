@@ -1,46 +1,33 @@
 {
   "name": "example",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "repository": {
-        "type": "git",
-        "url": "www.github.com",
-        "directory": "example"
-  },
-  "dependencies": {
-    "@local/lib": "file:../lib",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "ajv": "^8.17.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1"
+    "type": "git",
+    "url": "https://github.com/Ptolemy2002/express-utils",
+    "directory": "example"
   },
   "scripts": {
     "postinstall": "npx typesync",
     "uninstall": "bash ./scripts/uninstall.sh",
     "reinstall": "bash ./scripts/reinstall.sh",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node ./bin/www"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@ptolemy2002/express-utils": "file:../lib",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/cookie-parser": "~1.4.7",
+    "@types/debug": "~4.1.12",
+    "@types/ejs": "~2.6.3",
+    "@types/express": "~4.16.1",
+    "@types/http-errors": "~1.6.3",
+    "@types/morgan": "~1.9.9"
   }
 }
