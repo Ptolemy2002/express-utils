@@ -1,9 +1,46 @@
-# React Library CRA Project
+# Express Utils
+This library contains miscellaneous utilities for Express development.
+
+The functions are not exported as default, so you can import them in one of the following ways:
+```
+// ES6
+import { functionName } from '@ptolemy2002/express-utils';
+// CommonJS
+const { functionName } = require('@ptolemy2002/express-utils');
+```
+
 ## Meta
 This is a Library Created by Ptolemy2002's [cra-template-react-library](https://www.npmjs.com/package/@ptolemy2002/cra-template-react-library) template in combination with [create-react-app](https://www.npmjs.com/package/create-react-app). However, it does not actually depend on React - it has been modified to work with Express. It contains methods of building and publishing your library to npm.
 
+For now, the library does not use TypeScript.
+
+## Middleware
+The following middleware functions are available in the library:
+
+### asyncErrorHandler
+#### Description
+This is a wrapper for asynchronous express functions that allows catching asynchronous errors and handling them as if they were synchronous.
+
+#### Parameters
+- `fn` (Function): The asynchronous function to be wrapped.
+
+#### Returns
+`Function` - A function that can be used as an express route handler or middleware.
+
+### errorOrNext
+#### Description
+This function is middleware that allows very basic error handling. If an error is passed to it, it will respond with the specified status code and message. If no error is passed, it will call the next middleware.
+
+#### Parameters
+- `args` (Object): An object containing the following properties:
+  - `status` (Number): The status code to be sent in the response. Defaults to 500.
+  - `message` (String): The message to be sent in the response. Defaults to 'Internal Server Error'.
+
+#### Returns
+`Function` - A function that can be used as an express route handler or middleware.
+
 ## Peer Dependencies
-These should be installed in order to use the library, as npm does not automatically add peer dependencies to your project.
+This project does not have any peer dependencies, so it should work out of the box.
 
 ## Commands
 The following commands exist in the project:
