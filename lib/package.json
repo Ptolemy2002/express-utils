@@ -7,6 +7,11 @@
     "files": [
         "/dist"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Ptolemy2002/express-utils",
+        "directory": "lib"
+    },
     "scripts": {
         "build": "tsc --project ./tsconfig.json --skipLibCheck --maxNodeModuleJsDepth 0",
         "postinstall": "npx typesync",
