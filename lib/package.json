@@ -1,12 +1,14 @@
 {
     "name": "@ptolemy2002/express-utils",
-    "version": "1.0.1",
-    "main": "index.js",
+    "version": "2.0.0",
+    "private": false,
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "files": [
-        "index.js"
+        "/dist"
     ],
     "scripts": {
-        "build": "esbuild src/index.js --bundle --format=cjs --outfile=index.js --loader:.js=jsx",
+        "build": "tsc --project ./tsconfig.json --skipLibCheck --maxNodeModuleJsDepth 0",
         "postinstall": "npx typesync",
         "uninstall": "bash ./scripts/uninstall.sh",
         "reinstall": "bash ./scripts/reinstall.sh",
@@ -19,15 +21,11 @@
         "release-minor": "bash ./scripts/release.sh minor",
         "release-major": "bash ./scripts/release.sh major"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Ptolemy2002/express-utils",
-        "directory": "lib"
+    "peerDependencies": {
+        "express": "^4.21.0"
     },
-    "description": "Utilities for working with Express",
-    "license": "ISC",
-    "peerDependencies": {},
     "devDependencies": {
-        "esbuild": "^0.23.0"
+        "@types/express": "~5.0.0",
+        "express": "^4.21.0"
     }
 }
