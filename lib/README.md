@@ -17,17 +17,6 @@ type ErrorOrNextOptions = {
 };
 ```
 
-## Types
-The following types are available in the library:
-
-### ErrorOrNextOptions
-#### Description
-An object containing options for the `errorOrNext` middleware function.
-
-#### Properties
-- `status` (`number`): The status code to be sent in the response. Defaults to 500.
-- `message` (`string`): The message to be sent in the response. Defaults to 'Internal Server Error'.
-
 ## Middleware
 The following middleware functions are available in the library:
 
