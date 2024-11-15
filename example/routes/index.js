@@ -7,9 +7,9 @@ router.get('/', function(_, res, _) {
   res.render('index', { title: 'Express Utils Test' });
 });
 
-router.get('/async-error', asyncErrorHandler(asyncErrorHandler(async function(_, res, _) {
+router.get('/async-error', asyncErrorHandler(async function(_, res, _) {
   throw new Error("This is an async error");
-})));
+}));
 
 router.get('/error', () => {
   throw new Error("This is a sync error");
