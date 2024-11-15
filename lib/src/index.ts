@@ -1,6 +1,17 @@
 import {Request, Response, NextFunction, ErrorRequestHandler, RequestHandler} from "express";
+import {ParsedQs} from "qs";
+import {RouteParameters} from "express-serve-static-core";
 
-export const asyncErrorHandler = (fn: RequestHandler) => (req: Request, res: Response, next: NextFunction) => {
+export const asyncErrorHandler = <
+    Route extends string,
+    P = RouteParameters<Route>,
+    ResBody = any,
+    ReqBody = any,
+    ReqQuery = ParsedQs,
+    LocalsObj extends Record<string, any> = Record<string, any>
+>(fn: RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>): RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj> => (
+    req: Request<P, ResBody, ReqBody, ReqQuery, LocalsObj>, res: Response<ResBody, LocalsObj>, next: NextFunction
+) => {
     return Promise
         .resolve(fn(req, res, next))
         .catch(next);

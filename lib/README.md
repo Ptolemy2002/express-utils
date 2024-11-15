@@ -11,6 +11,10 @@ const { functionName } = require('@ptolemy2002/express-utils');
 
 ## Type Reference
 ```typescript
+import {Request, Response, NextFunction, ErrorRequestHandler, RequestHandler} from "express";
+import {ParsedQs} from "qs";
+import {RouteParameters} from "express-serve-static-core";
+
 type ErrorOrNextOptions = {
     status?: number;
     message?: string;
@@ -20,15 +24,17 @@ type ErrorOrNextOptions = {
 ## Middleware
 The following middleware functions are available in the library:
 
-### asyncErrorHandler
+### asyncErrorHandler<Route extends string, P = RouteParameters<Route>, ResBody = any, ReqBody = any, ReqQuery = ParsedQs, LocalsObj extends Record<string, any> = Record<string, any>>
 #### Description
 This is a wrapper for asynchronous express functions that allows catching asynchronous errors and handling them as if they were synchronous.
 
+The type parameters here are the same as those for the `RequestHandler` type in the `express` package.
+
 #### Parameters
-- `fn` (`express.RequestHandler`): The asynchronous function to be wrapped.
+- `fn` (`RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>`): The asynchronous function to be wrapped.
 
 #### Returns
-`express.RequestHandler` - A function that can be used as an express route handler or middleware, catching any errors thrown by the original function as if they were synchronous.
+`RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>` - A function that can be used as an express route handler or middleware, catching any errors thrown by the original function as if they were synchronous.
 
 ### errorOrNext
 #### Description
@@ -40,7 +46,7 @@ This function is middleware that allows very basic error handling. If an error i
   - `message` (`string`): The message to be sent in the response. Defaults to 'Internal Server Error'.
 
 #### Returns
-`express.ErrorRequestHandler` - A function that can be used as express middleware to handle errors.
+`ErrorRequestHandler` - A function that can be used as express middleware to handle errors.
 
 ## Peer Dependencies
 - `express^4.21.0`
